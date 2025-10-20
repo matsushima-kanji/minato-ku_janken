@@ -1,0 +1,3 @@
+ARG VERSION=latest
+FROM koalaman/shellcheck-alpine:$VERSION
+COPY ./ ./

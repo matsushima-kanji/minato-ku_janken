@@ -1,0 +1,5 @@
+FROM shellspec/openwrt:12.09
+RUN mkdir /var/lock /home \
+ && opkg update && opkg install shadow-useradd \
+ && useradd -m user
+ENV SH=/bin/sh

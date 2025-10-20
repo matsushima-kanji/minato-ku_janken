@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# Wrapper to run the vendored ShellSpec CLI that Speckit relies on.
+set -eu
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+REPO_ROOT=$(CDPATH= cd -- "${SCRIPT_DIR}/.." && pwd)
+SHELLSPEC_HOME="${REPO_ROOT}/vendor/shellspec-0.28.1"
+
+exec "${SHELLSPEC_HOME}/shellspec" "$@"

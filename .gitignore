@@ -1,0 +1,13 @@
+node_modules/
+.npm/
+.shellspec-local
+.shellspec-quick.log
+report/
+coverage/
+.next/
+out/
+image/
+.vercel/
+*.log
+.DS_Store
+.vercel

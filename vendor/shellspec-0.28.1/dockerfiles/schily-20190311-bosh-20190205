@@ -1,0 +1,3 @@
+FROM shellspec/schilytools:2019-03-11
+RUN useradd -m user
+ENV SH=/usr/local/bin/bosh

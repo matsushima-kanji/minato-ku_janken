@@ -1,0 +1,5 @@
+FROM shellspec/lede:17.01.7
+RUN mkdir /var/lock /home \
+ && opkg update && opkg install shadow-useradd \
+ && useradd -m user
+ENV SH=/bin/ash

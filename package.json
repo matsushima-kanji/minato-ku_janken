@@ -1,0 +1,41 @@
+{
+  "name": "minato-ku_janken",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "bin/shellspec",
+    "speckit:test": "bin/shellspec",
+    "speckit:list": "bin/shellspec --list examples",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test:logic": "node --no-warnings node_modules/vitest/vitest.mjs run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matsushima-kanji/minato-ku_janken.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matsushima-kanji/minato-ku_janken/issues"
+  },
+  "homepage": "https://github.com/matsushima-kanji/minato-ku_janken#readme",
+  "dependencies": {
+    "next": "^14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "shellspec": "github:shellspec/shellspec",
+    "speckit": "^0.1.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+helper/fixture/** -text
+dockerfiles/* linguist-language=Dockerfile

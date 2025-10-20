@@ -1,0 +1,59 @@
+version: 2
+jobs:
+  lint:
+    docker:
+      - image: koalaman/shellcheck-alpine:v0.7.1
+    steps:
+      - checkout
+      - run: shellcheck shellspec $(find lib libexec spec examples -name '*.sh')
+  test:
+    working_directory: ~/shellspec
+    docker:
+      - image: alpine
+    steps:
+      - run: apk add --no-progress --no-cache ca-certificates
+      - checkout
+      - run: ./shellspec --task fixture:stat:prepare
+      - run: ./shellspec -o tap -o junit
+      - run:
+          command: |
+            mkdir -p ~/report/shellspec
+            cp report/results_junit.xml ~/report/shellspec/
+          when: always
+      - store_test_results:
+          path: ~/report
+      - store_artifacts:
+          path: report
+  coverage:
+    working_directory: ~/shellspec
+    docker:
+      - image: shellspec/kcov
+    steps:
+      - checkout
+      - run: ./shellspec --task fixture:stat:prepare
+      - run: ./shellspec --kcov
+      - store_artifacts:
+          path: coverage
+workflows:
+  version: 2
+  lint_test_and_coverage:
+    jobs:
+      - lint
+      - test
+      - coverage:
+          requires:
+            - lint
+            - test
+  daily_update_schedule:
+    jobs:
+      - lint
+      - coverage:
+          requires:
+            - lint
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - master
