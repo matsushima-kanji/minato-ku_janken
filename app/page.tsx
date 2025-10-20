@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useMemo, useState } from 'react';
 import {
   HANDS,
@@ -111,12 +110,9 @@ export default function Home() {
       <h1>港区女子マウントじゃんけん</h1>
       <section className="arena">
         <div className="opponent">
-          <Image
+          <img
             src={opponentImage}
             alt={opponentImageAlt}
-            width={result === 'win' ? 360 : 320}
-            height={result === 'win' ? 360 : 320}
-            priority
             className={result === 'win' ? 'defeated' : undefined}
           />
           <div className="speech-bubble">
@@ -176,7 +172,6 @@ export default function Home() {
           )}
         </div>
       </section>
-      <footer>最終的には Vercel にデプロイすれば、どこでもマウントバトル！</footer>
     </main>
   );
 }
